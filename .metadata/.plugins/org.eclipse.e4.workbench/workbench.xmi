@@ -9,6 +9,7 @@
     <persistedState key="workingSets" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workingSets/>"/>
     <persistedState key="aggregateWorkingSetId" value="Aggregate for window 1462954174105"/>
     <tags>topLevel</tags>
+    <tags>shellMaximized</tags>
     <children xsi:type="basic:PartSashContainer" xmi:id="_qh3lQxdPEean1_M-pv78Fg" selectedElement="_qh3lRBdPEean1_M-pv78Fg" horizontal="true">
       <children xsi:type="advanced:PerspectiveStack" xmi:id="_qh3lRBdPEean1_M-pv78Fg" elementId="org.eclipse.ui.ide.perspectivestack" containerData="7500" selectedElement="_sEz-thdPEean1_M-pv78Fg">
         <children xsi:type="advanced:Perspective" xmi:id="_sEz-thdPEean1_M-pv78Fg" elementId="org.eclipse.jdt.ui.JavaPerspective" selectedElement="_sEz-txdPEean1_M-pv78Fg" label="Java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/eview16/jperspective.gif">
@@ -276,7 +277,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_rWPoghdPEean1_M-pv78Fg" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_rWYydxdPEean1_M-pv78Fg" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_oW5mNxdPEean1_M-pv78Fg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_5YhzEBzXEea17rKm0ss1Dw" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_oW5mNxdPEean1_M-pv78Fg"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_rWPogxdPEean1_M-pv78Fg" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -306,7 +307,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_rWPohxdPEean1_M-pv78Fg" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_rWYygRdPEean1_M-pv78Fg" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_oW5lvRdPEean1_M-pv78Fg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_5Y8CwBzXEea17rKm0ss1Dw" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_oW5lvRdPEean1_M-pv78Fg"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_rWPoiBdPEean1_M-pv78Fg" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -415,6 +416,7 @@
     <bindings xmi:id="_oYYxEhdPEean1_M-pv78Fg" keySequence="CTRL+2 L" command="_oW5ixRdPEean1_M-pv78Fg"/>
     <bindings xmi:id="_oYYxFBdPEean1_M-pv78Fg" keySequence="CTRL+2 F" command="_oW5mtBdPEean1_M-pv78Fg"/>
     <bindings xmi:id="_oYYxNRdPEean1_M-pv78Fg" keySequence="CTRL+2 R" command="_oW5l1hdPEean1_M-pv78Fg"/>
+    <bindings xmi:id="_y3ThwBzXEea17rKm0ss1Dw" keySequence="ALT+CTRL+SPACE" command="_ywUI9RzXEea17rKm0ss1Dw"/>
   </bindingTables>
   <bindingTables xmi:id="_oYF1VBdPEean1_M-pv78Fg" elementId="org.eclipse.jdt.ui.propertiesEditorScope" bindingContext="_oXDTxRdPEean1_M-pv78Fg">
     <bindings xmi:id="_oYF1VRdPEean1_M-pv78Fg" keySequence="CTRL+SHIFT+C" command="_oW5k0xdPEean1_M-pv78Fg"/>
@@ -1609,7 +1611,7 @@
     <tags>View</tags>
     <tags>categoryTag:PHP Tools</tags>
   </descriptors>
-  <descriptors xmi:id="_oxYfERdPEean1_M-pv78Fg" elementId="org.eclipse.recommenders.apidocs.rcp.views.apidocs" label="API Docs" iconURI="platform:/plugin/org.eclipse.recommenders.apidocs.rcp/icons/extdoc.png" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+  <descriptors xmi:id="_oxYfERdPEean1_M-pv78Fg" elementId="org.eclipse.recommenders.apidocs.rcp.views.apidocs" label="API Docs" iconURI="platform:/plugin/org.eclipse.recommenders.apidocs.rcp/icons/view16/apidocs.png" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
     <tags>View</tags>
     <tags>categoryTag:Code Recommenders</tags>
   </descriptors>
@@ -1617,7 +1619,7 @@
     <tags>View</tags>
     <tags>categoryTag:Code Recommenders</tags>
   </descriptors>
-  <descriptors xmi:id="_o08wcBdPEean1_M-pv78Fg" elementId="org.eclipse.recommenders.models.rcp.views.projectCoordinates" label="Project Coordinates" iconURI="platform:/plugin/org.eclipse.recommenders.models.rcp/icons/view16/depinsp.gif" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+  <descriptors xmi:id="_o08wcBdPEean1_M-pv78Fg" elementId="org.eclipse.recommenders.models.rcp.views.projectCoordinates" label="Project Coordinates" iconURI="platform:/plugin/org.eclipse.recommenders.coordinates.rcp/icons/view16/depinsp.gif" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
     <tags>View</tags>
     <tags>categoryTag:Code Recommenders</tags>
   </descriptors>
@@ -1864,6 +1866,10 @@
   <descriptors xmi:id="_o7gEYBdPEean1_M-pv78Fg" elementId="org.eclipse.sirius.ui.tools.views.model.explorer" label="Model Explorer" iconURI="platform:/plugin/org.eclipse.sirius.ui/icons/full/others/ModelExplorer.gif" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
     <tags>View</tags>
     <tags>categoryTag:Sirius</tags>
+  </descriptors>
+  <descriptors xmi:id="_0N8kkBzXEea17rKm0ss1Dw" elementId="org.eclipse.recommenders.snipmatch.rcp.views.snippets" label="Snippets" iconURI="platform:/plugin/org.eclipse.recommenders.snipmatch.rcp/icons/view16/snippets.png" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <tags>View</tags>
+    <tags>categoryTag:Code Recommenders</tags>
   </descriptors>
   <trimContributions xmi:id="_2r10UF9tEeO-yojH_y4TJA" elementId="org.eclipse.ui.ide.application.trimcontribution.QuickAccess" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" toBeRendered="false" parentId="org.eclipse.ui.main.toolbar" positionInParent="last">
     <children xsi:type="menu:ToolControl" xmi:id="_76uUAF9tEeO-yojH_y4TJA" elementId="Spacer Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
@@ -3447,6 +3453,20 @@
   <commands xmi:id="_qhH-exdPEean1_M-pv78Fg" elementId="AUTOGEN:::org.eclipse.acceleo.ui.interpreter.debug.VariableViewActions/org.eclipse.acceleo.ui.interpreter.debug.AddVariablesToInterpreterAction" commandName="Adds variables." description="Add the selected variables in the interpreter." category="_oWvxmxdPEean1_M-pv78Fg"/>
   <commands xmi:id="_qhH-fBdPEean1_M-pv78Fg" elementId="AUTOGEN:::org.eclipse.pde.ui.logViewActions/org.eclipse.jdt.debug.ui.LogViewActions.showStackTrace" commandName="Show Stack Trace in Console View" description="Show Stack Trace in Console View" category="_oWvxmxdPEean1_M-pv78Fg"/>
   <commands xmi:id="_qhH-fRdPEean1_M-pv78Fg" elementId="AUTOGEN:::org.python.pydev.navigator.actions.mylyn/org.python.pydev.navigator.actions.mylyn.FilterResourceNavigatorAction" commandName="Focus on Active Task" description="Focus on Active Task (Alt+Click to reveal filtered elements)" category="_oWvxmxdPEean1_M-pv78Fg"/>
+  <commands xmi:id="_ywUI8RzXEea17rKm0ss1Dw" elementId="org.eclipse.recommenders.utils.rcp.commands.openBrowserDialog" commandName="Open a Web browser" category="_oWvxmxdPEean1_M-pv78Fg">
+    <parameters xmi:id="_ywUI8hzXEea17rKm0ss1Dw" elementId="org.eclipse.recommenders.utils.rcp.linkContribution.href" name="URI" optional="false"/>
+  </commands>
+  <commands xmi:id="_ywUI8xzXEea17rKm0ss1Dw" elementId="org.eclipse.recommenders.utils.rcp.commands.openBrowser" commandName="Open a Web browser" category="_oWvxmxdPEean1_M-pv78Fg">
+    <parameters xmi:id="_ywUI9BzXEea17rKm0ss1Dw" elementId="org.eclipse.recommenders.utils.rcp.linkContribution.href" name="URI" optional="false"/>
+  </commands>
+  <commands xmi:id="_ywUI9RzXEea17rKm0ss1Dw" elementId="org.eclipse.recommenders.snipmatch.rcp.commands.completion" commandName="Snipmatch Snippet Completion" description="Open a dialog to search for and insert code snippets" category="_oWvxvBdPEean1_M-pv78Fg"/>
+  <commands xmi:id="_ywUI9hzXEea17rKm0ss1Dw" elementId="org.eclipse.recommenders.snipmatch.rcp.commands.createSnippet" commandName="Create Snippet..." description="Creates a new Snipmatch code snippet from the current editor&#x2019;s text selection" category="_oWvxgRdPEean1_M-pv78Fg"/>
+  <commands xmi:id="_ywUI9xzXEea17rKm0ss1Dw" elementId="org.eclipse.recommenders.utils.rcp.commands.openPreferences" commandName="Open the preferences dialog" category="_oWvxmxdPEean1_M-pv78Fg">
+    <parameters xmi:id="_ywUI-BzXEea17rKm0ss1Dw" elementId="org.eclipse.recommenders.utils.rcp.linkContribution.href" name="URI" optional="false"/>
+  </commands>
+  <commands xmi:id="_ywUI-RzXEea17rKm0ss1Dw" elementId="org.eclipse.recommenders.rcp.commands.extensionDiscovery" commandName="Discover New Extensions" category="_oWvxmxdPEean1_M-pv78Fg">
+    <parameters xmi:id="_ywUI-hzXEea17rKm0ss1Dw" elementId="org.eclipse.recommenders.utils.rcp.linkContribution.href" name="URI" optional="false"/>
+  </commands>
   <addons xmi:id="_oS4lOBdPEean1_M-pv78Fg" elementId="org.eclipse.e4.core.commands.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_oS4lORdPEean1_M-pv78Fg" elementId="org.eclipse.e4.ui.contexts.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_oS4lOhdPEean1_M-pv78Fg" elementId="org.eclipse.e4.ui.bindings.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
