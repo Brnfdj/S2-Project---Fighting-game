@@ -26,9 +26,13 @@ public class Move {
 	 * @param start
 	 * @param finish
 	 */
+	
 	public Move(Position start, Position finish)
 	{
-		
+		this.start = start;
+		this.finish = finish;
+		this.moveX = finish.getLine() - start.getLine();
+		this.moveY = finish.getColumn() - start.getColumn();
 	}
 
 	/**

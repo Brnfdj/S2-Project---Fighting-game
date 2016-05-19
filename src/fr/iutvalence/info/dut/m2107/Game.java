@@ -15,7 +15,15 @@ public class Game {
 		
 		public void play()
 		{
+			while (!endGame())
+			{
+				
+			}
+		}
+
+		private boolean endGame() {
 			
+			return false;
 		}
 		
 		
