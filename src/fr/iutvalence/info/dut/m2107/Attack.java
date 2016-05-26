@@ -8,8 +8,8 @@ public class Attack {
 	private int damages;
 
 	
-	public Attack(int scope, int damages) {
-		super();
+	public Attack(String name,int scope, int damages) 
+	{
 		this.scope = scope;
 		this.damages = damages;
 	}

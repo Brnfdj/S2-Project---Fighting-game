@@ -13,13 +13,21 @@ public class Cell {
 		this.character = null;
 	}
 	
-	public Cell(Character character) {
+	public Cell(Character character) 
+	{
 		
 		this.character = character;
 	}
+	
+	public Cell(Rock rock) 
+	{
+		
+		this.rock = rock;
+	}
 
 
-	public Character getCharacter() {
+	public Character getCharacter() 
+	{
 		
 		return character;
 	}

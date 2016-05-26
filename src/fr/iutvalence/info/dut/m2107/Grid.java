@@ -9,7 +9,7 @@ public class Grid {
 	 */
 	private final static int NUMBER_OF_COLUMNS=20;	
 	
-	private Cell[][] cells;
+	public Cell[][] cells;
 	
 	/**
 	 *  This is the constructor of the game grid
@@ -32,8 +32,8 @@ public class Grid {
 	 */
 	public void initialisation()
 	{
-		cells[0][0].setCharacter(new Character1("one",1));
-		cells[19][19].setCharacter(new Character2("two",0));
+		cells[0][0].setCharacter(new Homer("H",30,new Attack("coup de pichet",4,3),new Attack("explosionde centrale",6,2),new Attack("coup de voiture",2,5),new Attack("etranglement",1,10)));
+		cells[19][19].setCharacter(new Bender("B",30,new Attack("coup de biere",4,3),new Attack("coup de pichet",2,4),new Attack("coup de dents",2,6),new Attack("extinction de l'espece humaine",10,2)));
 	}	
 	
 	
