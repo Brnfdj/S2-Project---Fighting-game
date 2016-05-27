@@ -2,55 +2,45 @@ package fr.iutvalence.info.dut.m2107;
 
 public class Cell {
 	
-	
-	private Character character;
-	
-	
 
+	private Player player;
 	
 	public Cell()
 	{
-		this.character = null;
+		this.player = null;
 	}
 	
-	public Cell(Character character) 
+	public Cell(Player player) 
 	{
 		
-		this.character = character;
-	}
-	
-	public Cell(Rock rock) 
-	{
-		
-		this.rock = rock;
+		this.player = player;
 	}
 
-
-	public Character getCharacter() 
+	public Player getPlayer() 
 	{
 		
-		return character;
+		return player;
 	}
 	
-	public void setCharacter(Character character)
+	public void setPlayer(Player player)
 	{
-		this.character = character;
+		this.player = player;
 		
 	}
 	
 	public String toString()
 	{
 		String a = null;
-		if (this.character == null)
+		if (this.player == null)
 			a = "|   ";
 		else
-		switch (this.character.getName())
+		switch (this.player.getCharacter().getName())
 		{
-		case "one": a = "| o ";
+		case "Bender": a = "| B ";
 		break;
-		case "two": a = "| t ";
+		case "Cartman": a = "| C ";
 		break;
-		case "three": a = "| r ";
+		case "Homer": a = "| H ";
 		}
 		
 		return a;
