@@ -4,6 +4,7 @@ public class Cell {
 	
 
 	private Player player;
+	private Bonus bonus;
 	
 	public Cell()
 	{
@@ -14,6 +15,11 @@ public class Cell {
 	{
 		
 		this.player = player;
+	}
+	
+	public Cell(Bonus bonus)
+	{
+		this.bonus=bonus;
 	}
 
 	public Player getPlayer() 

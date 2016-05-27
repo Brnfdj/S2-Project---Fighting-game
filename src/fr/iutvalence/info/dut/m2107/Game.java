@@ -11,11 +11,11 @@ public class Game {
 	
 	private int oldCellLine;
 	private Player player;
-	
-
 	private int oldCellColumn;
 	private int newCellLine;
 	private int newCellColumn;
+	private int opponentCellLine;
+	private int opponentCellColumn;
 	
 		
 		public Game()
@@ -42,6 +42,16 @@ public class Game {
 					
 					if (counter%2==0)
 					{
+						if (counter==0)
+						{
+							opponentCellLine=19;
+							opponentCellColumn=19;
+						}
+						else 
+						{
+							opponentCellLine=newCellLine;
+							opponentCellColumn=newCellColumn;
+						}
 						coordonate();
 						
 						player=Grid.cells[oldCellLine][oldCellColumn].getPlayer();
@@ -52,10 +62,21 @@ public class Game {
 						Grid.cells[oldCellLine][oldCellColumn].setPlayer(null);
 						Grid.cells[newCellLine][newCellColumn].setPlayer(player);
 						System.out.println(grid.toString());
-						System.out.println("player1 spells: 1:"+getCharacter().getSpell1());
+						//System.out.println("player1 spells: 1:"+getCharacter().getSpell1());
+						doAttack();
 					}
 					else
 					{ 
+						if (counter==1)
+						{
+							opponentCellLine=0;
+							opponentCellColumn=0;
+						}
+						else 
+						{
+							opponentCellLine=newCellLine;
+							opponentCellColumn=newCellColumn;
+						}
 						coordonate();
 						
 						player=Grid.cells[oldCellLine][oldCellColumn].getPlayer();
@@ -67,14 +88,61 @@ public class Game {
 						Grid.cells[oldCellLine][oldCellColumn].setPlayer(null);
 						Grid.cells[newCellLine][newCellColumn].setPlayer(player);
 						System.out.println(grid.toString());
+						doAttack();
 					}
 						counter++;
 				}
 			}
 
+		public void doAttack()
+		{
+			switch(sc.nextInt())
+			{
+			case 0:
+				break;
+			case 1:
+				if (player.getCharacter().getSpell1().isAttackValid())
+				{
+					player.getCharacter().setPv(-player.getCharacter().getSpell1().getDamages());
+				}
+				else
+				{
+					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas (batard)");
+					doAttack();
+				}
+			case 2:
+				if (player.getCharacter().getSpell2().isAttackValid())
+				{
+					player.getCharacter().setPv(-player.getCharacter().getSpell2().getDamages());
+				}
+				else
+				{
+					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas (batard)");
+					doAttack();
+				}
+			case 3:
+				if (player.getCharacter().getSpell3().isAttackValid())
+				{
+					player.getCharacter().setPv(-player.getCharacter().getSpell3().getDamages());
+				}
+				else
+				{
+					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas (batard)");
+					doAttack();
+				}
+			case 4:
+				if (player.getCharacter().getSpell4().isAttackValid())
+				{
+					player.getCharacter().setPv(-player.getCharacter().getSpell4().getDamages());
+				}
+				else
+				{
+					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas (batard)");
+					doAttack();
+				}
+			}
+		}
 			
-		
-		
 		public void coordonate()
 		{
 			switch(counter)
@@ -98,6 +166,27 @@ public class Game {
 				newCellColumn=sc.nextInt();
 			}
 		}
+		
+		public int getNewCellLine()
+		{
+			return newCellLine;
+		}
+
+		public int getNewCellColumn() 
+		{
+			return newCellColumn;
+		}
+
+		public int getOpponentCellLine() 
+		{
+			return opponentCellLine;
+		}
+
+		public int getOpponentCellColumn() 
+		{
+			return opponentCellColumn;
+		}
+
 
 		private boolean endGame() {
 			

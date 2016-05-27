@@ -71,13 +71,13 @@ public class Grid
 		switch(perso1)
 		{
 		case 1:
-			player1=new Player(player1name, new Homer("Homer",30,new Attack("coup de pichet",4,3),new Attack("explosionde centrale",6,2),new Attack("coup de voiture",2,5),new Attack("etranglement",1,10)));
+			player1=new Player(player1name, new Homer("Homer",30,4,new Attack("coup de pichet",4,3),new Attack("explosionde centrale",6,2),new Attack("coup de voiture",2,5),new Attack("etranglement",1,10)));
 			break;
 		case 2:
-			player1=new Player(player1name,new Bender("Bender",30,new Attack("coup de biere",4,3),new Attack("coup de pichet",2,4),new Attack("coup de dents",2,6),new Attack("extinction de l'espece humaine",10,2)));
+			player1=new Player(player1name,new Bender("Bender",30,4,new Attack("coup de biere",4,3),new Attack("coup de pichet",2,4),new Attack("coup de dents",2,6),new Attack("extinction de l'espece humaine",10,2)));
 			break;
 		case 3:
-			player1=new Player(player1name,new Cartman("Cartman",30,new Attack("negociation",4,3),new Attack("entourloupe",6,2),new Attack("corruption",3,4),new Attack("coup de bidon",2,8)));
+			player1=new Player(player1name,new Cartman("Cartman",30,4,new Attack("negociation",4,3),new Attack("entourloupe",6,2),new Attack("corruption",3,4),new Attack("coup de bidon",2,8)));
 		}
 		
 		System.out.println("1: Homer , 2:Bender, 3:Cartman");
@@ -92,13 +92,13 @@ public class Grid
 		switch(perso2)
 		{
 		case 1:
-			player2=new Player(player2name, new Homer("Homer",30,new Attack("coup de pichet",4,3),new Attack("explosion de centrale",6,2),new Attack("coup de voiture",2,5),new Attack("etranglement",1,10)));
+			player2=new Player(player2name, new Homer("Homer",30,4,new Attack("coup de pichet",4,3),new Attack("explosion de centrale",6,2),new Attack("coup de voiture",2,5),new Attack("etranglement",1,10)));
 			break;
 		case 2:
-			player2=new Player(player2name,new Bender("Bender",30,new Attack("coup de biere",4,3),new Attack("coup de pichet",2,4),new Attack("coup de dents",2,6),new Attack("extinction de l'espece humaine",10,2)));
+			player2=new Player(player2name,new Bender("Bender",30,4,new Attack("coup de biere",4,3),new Attack("coup de pichet",2,4),new Attack("coup de dents",2,6),new Attack("extinction de l'espece humaine",10,2)));
 			break;
 		case 3:
-			player2=new Player(player2name,new Cartman("Cartman",30,new Attack("negociation",4,3),new Attack("entourloupe",6,2),new Attack("corruption",3,4),new Attack("coup de bidon",2,8)));
+			player2=new Player(player2name,new Cartman("Cartman",30,4,new Attack("negociation",4,3),new Attack("entourloupe",6,2),new Attack("corruption",3,4),new Attack("coup de bidon",2,8)));
 		}
 	}	
 	
