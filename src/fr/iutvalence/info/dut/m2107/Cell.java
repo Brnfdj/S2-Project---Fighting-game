@@ -1,27 +1,10 @@
 package fr.iutvalence.info.dut.m2107;
 
-public class Cell {
-	
+public enum Cell {
+	Player, Bonus,Block,Empty;
 
 	private Player player;
-	private Bonus bonus;
 	
-	public Cell()
-	{
-		this.player = null;
-	}
-	
-	public Cell(Player player) 
-	{
-		
-		this.player = player;
-	}
-	
-	public Cell(Bonus bonus)
-	{
-		this.bonus=bonus;
-	}
-
 	public Player getPlayer() 
 	{
 		
@@ -37,8 +20,12 @@ public class Cell {
 	public String toString()
 	{
 		String a = null;
-		if (this.player == null)
+		if (this== Empty)
 			a = "|   ";
+		if (this==Bonus)
+			a = "| X ";
+		if (this==Block)
+			a = "|###";
 		else
 		switch (this.player.getCharacter().getName())
 		{

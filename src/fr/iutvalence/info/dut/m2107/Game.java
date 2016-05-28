@@ -54,13 +54,13 @@ public class Game {
 						}
 						coordonate();
 						
-						player=Grid.cells[oldCellLine][oldCellColumn].getPlayer();
+						player=grid.getCells(oldCellLine,oldCellColumn).getPlayer();
 						while (!player.getCharacter().isValid(new Move(new Position(oldCellLine, oldCellColumn),new Position(newCellLine, newCellColumn))))
 						{
 							coordonate();
 						}
-						Grid.cells[oldCellLine][oldCellColumn].setPlayer(null);
-						Grid.cells[newCellLine][newCellColumn].setPlayer(player);
+						grid.getCells(oldCellLine,oldCellColumn).setPlayer(null);
+						grid.getCells(newCellLine,newCellColumn).setPlayer(player);
 						System.out.println(grid.toString());
 						//System.out.println("player1 spells: 1:"+getCharacter().getSpell1());
 						doAttack();
@@ -79,14 +79,14 @@ public class Game {
 						}
 						coordonate();
 						
-						player=Grid.cells[oldCellLine][oldCellColumn].getPlayer();
+						player=grid.getCells(oldCellLine,oldCellColumn).getPlayer();
 						while (!player.getCharacter().isValid(new Move(new Position(oldCellLine, oldCellColumn),new Position(newCellLine, newCellColumn))))
 						{
 							coordonate();
 							System.out.println(grid.toString());
 						}
-						Grid.cells[oldCellLine][oldCellColumn].setPlayer(null);
-						Grid.cells[newCellLine][newCellColumn].setPlayer(player);
+						grid.getCells(oldCellLine,oldCellColumn).setPlayer(null);
+						grid.getCells(newCellLine,newCellColumn).setPlayer(player);
 						System.out.println(grid.toString());
 						doAttack();
 					}
@@ -159,7 +159,7 @@ public class Game {
 				newCellColumn=sc.nextInt();
 				
 			default:
-				System.out.println("entrez les coordonnées de votre déplacement:");
+				System.out.println("entrez les coordonnï¿½es de votre dï¿½placement:");
 				oldCellLine=newCellLine;
 				oldCellColumn=newCellColumn;
 				newCellLine=sc.nextInt();

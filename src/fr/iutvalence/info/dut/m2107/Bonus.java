@@ -1,9 +1,6 @@
 package fr.iutvalence.info.dut.m2107;
 
-public class Bonus 
+public enum Bonus 
 {
-	public Bonus()
-	{
-		
-	}
+	BonusPv,BonusMp,BonusDmg,BonusS;
 }

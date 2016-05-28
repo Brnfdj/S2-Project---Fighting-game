@@ -18,7 +18,7 @@ public class Grid
 	private String player2name;
 	private int perso1;
 	private int perso2;
-	public static Cell[][] cells;
+	public Cell[][] cells;
 	private Player player1;
 	private Player player2;
 	private int lineCounter;
@@ -41,7 +41,7 @@ public class Grid
 		{
 			for (int nbcolumn=0;nbcolumn<NUMBER_OF_COLUMNS;nbcolumn++)
 			{
-				cells[nblines][nbcolumn]=new Cell();
+				cells[nblines][nbcolumn]=Cell.Empty;
 			}
 		}
 		
@@ -86,7 +86,7 @@ public class Grid
 		
 		while (perso2==perso1)
 		{
-			System.out.println("personnage déjà pris, rechoisissez");
+			System.out.println("personnage dï¿½jï¿½ pris, rechoisissez");
 			sc.nextInt();
 		}
 		switch(perso2)
@@ -109,6 +109,11 @@ public class Grid
 		return player2;
 	}
 	
+	public Cell getCells(int x, int y)
+	{
+		return cells[x][y];
+	}
+	
 	public String toString()
 	{
 		String Grid = "";
@@ -117,7 +122,7 @@ public class Grid
 		{
 			for (int nbColumn = 0; nbColumn < NUMBER_OF_COLUMNS; nbColumn++)
 				Grid += this.cells[nbOfLine][nbColumn].toString();
-			Grid += "¦\n+---";
+			Grid += "ï¿½\n+---";
 				for (int numOflig = 0; numOflig < NUMBER_OF_LINES-1 ; numOflig++)
 					Grid +="+---";				
 				Grid += "+";
