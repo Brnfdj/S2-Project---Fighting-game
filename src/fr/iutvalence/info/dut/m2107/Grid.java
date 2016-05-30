@@ -1,4 +1,5 @@
 package fr.iutvalence.info.dut.m2107;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Grid 
@@ -51,12 +52,31 @@ public class Grid
 	 */
 	public void initialisation()
 	{
+		for (int i=0;i<NUMBER_OF_LINES;i++)
+		{
+			for (int j=0; j<NUMBER_OF_COLUMNS;j++)
+			{
+				this.cells[i][j]=Cell.Empty;
+			}
+		}
 		characterchose();
+		blockSpawn();
 		cells[0][0].setPlayer(player1);
 		cells[19][19].setPlayer(player2);
 	}
 	
 	
+	public void blockSpawn()
+	{
+		Random numberOfBlock = new Random(); 
+		int value = numberOfBlock.nextInt(50);
+		for (int i=0;i<value;i++)
+		{
+			Random blockCoordonate = new Random(); 
+			int xBlock = blockCoordonate.nextInt(20);
+			int yBlock =  blockCoordonate.nextInt(20);
+		}
+	}
 	private void characterchose() 
 	{
 		sc = new Scanner(System.in);
@@ -112,6 +132,11 @@ public class Grid
 	public Cell getCells(int x, int y)
 	{
 		return cells[x][y];
+	}
+	
+	public void setCells(Cell[][] cells)
+	{
+		this.cells = cells;
 	}
 	
 	public String toString()

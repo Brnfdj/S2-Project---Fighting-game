@@ -17,6 +17,11 @@ public enum Cell {
 		
 	}
 	
+	public Cell getCell()
+	{
+		return this;
+	}
+	
 	public String toString()
 	{
 		String a = null;
@@ -35,7 +40,6 @@ public enum Cell {
 		break;
 		case "Homer": a = "| H ";
 		}
-		
 		return a;
 	}
 

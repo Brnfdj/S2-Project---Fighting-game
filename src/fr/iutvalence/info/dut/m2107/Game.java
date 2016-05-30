@@ -1,7 +1,10 @@
 package fr.iutvalence.info.dut.m2107;
+import java.util.Random;
 import java.util.Scanner;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
+
+import miniprojetS2.Move;
 
 public class Game {
 	
@@ -29,12 +32,11 @@ public class Game {
 		 */
 		
 	
-		
+		Grid grid= new Grid();
 			public void play()
 			{
 				
 				sc = new Scanner(System.in);
-				Grid grid= new Grid();
 				grid.initialisation();
 				System.out.println(grid.toString());
 				while (!endGame())
@@ -42,6 +44,7 @@ public class Game {
 					
 					if (counter%2==0)
 					{
+						BonusSpawn();
 						if (counter==0)
 						{
 							opponentCellLine=19;
@@ -55,7 +58,8 @@ public class Game {
 						coordonate();
 						
 						player=grid.getCells(oldCellLine,oldCellColumn).getPlayer();
-						while (!player.getCharacter().isValid(new Move(new Position(oldCellLine, oldCellColumn),new Position(newCellLine, newCellColumn))))
+						while (!player.getCharacter().isValid(new Move(new Position(oldCellLine, oldCellColumn),new Position(newCellLine, newCellColumn))) 
+								&& !collision(new Move(new Position(oldCellLine, oldCellColumn),new Position(newCellLine, newCellColumn))))
 						{
 							coordonate();
 						}
@@ -92,6 +96,21 @@ public class Game {
 					}
 						counter++;
 				}
+			}
+
+		private void BonusSpawn()
+			{
+				Random probabilityBonusSpawner = new Random(); 
+				int bonusSpawn = probabilityBonusSpawner.nextInt(4);
+				if (bonusSpawn>1)
+				{
+					break;
+				}
+				Random whichBonus = new Random(); 
+				int value = whichBonus.nextInt(8);
+				if (value==1)
+					grid.cells
+				
 			}
 
 		public void doAttack()
@@ -165,6 +184,49 @@ public class Game {
 				newCellLine=sc.nextInt();
 				newCellColumn=sc.nextInt();
 			}
+		}
+		
+		public boolean collision(Move move)
+		{
+			if (grid.getCells(move.getFinish().getLine(),move.getFinish().getColumn()).getCell()!=Cell.Empty)
+				return false;
+			if(move.getMoveX()==0)
+			{
+					int i=0;
+					while(grid.getCells(move.getStart().getLine(),move.getStart().getColumn()+i).getCell()==Cell.Empty &&  i<move.getMoveY());
+					{
+						i++;
+					}
+					if (i+1==move.getFinish().getColumn())
+						return true;
+					return false;
+					
+			}
+			if(move.getMoveY()==0)
+			{
+					int i=0;
+					while(grid.getCells(move.getStart().getLine()+i,move.getStart().getColumn()).getCell()==Cell.Empty 
+							&&  i<move.getMoveX());
+					{
+						i++;
+					}
+					if (i+1==move.getFinish().getLine())
+						return true;
+					return false;
+			}
+			else
+			{
+				int i=0;
+				while(grid.getCells(move.getStart().getLine()+i,move.getStart().getColumn()+i).getCell()==Cell.Empty 
+						&&  i<move.getMoveY() && i<move.getMoveX());
+				{
+					i++;
+				}
+				if (i+1==move.getFinish().getColumn() && i+1==move.getFinish().getLine())
+					return true;
+				return false;
+			}
+			return false;
 		}
 		
 		public int getNewCellLine()
