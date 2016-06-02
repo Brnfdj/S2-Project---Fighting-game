@@ -4,10 +4,9 @@ public enum Cell {
 	Player, Bonus,Block,Empty;
 
 	private Player player;
-	
+	private Bonus bonus;
 	public Player getPlayer() 
 	{
-		
 		return player;
 	}
 	
@@ -17,6 +16,18 @@ public enum Cell {
 		
 	}
 	
+	
+	
+	public Bonus getBonus()
+	{
+		return bonus;
+	}
+
+	public void setBonus(Bonus bonus)
+	{
+		this.bonus = bonus;
+	}
+
 	public Cell getCell()
 	{
 		return this;

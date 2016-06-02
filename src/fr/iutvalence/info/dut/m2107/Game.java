@@ -19,6 +19,8 @@ public class Game {
 	private int newCellColumn;
 	private int opponentCellLine;
 	private int opponentCellColumn;
+	private int BonusSpawnX;
+	private int BonusSpawnY;
 	
 		
 		public Game()
@@ -39,9 +41,8 @@ public class Game {
 				sc = new Scanner(System.in);
 				grid.initialisation();
 				System.out.println(grid.toString());
-				while (!endGame())
+				while (!endGame(player))
 				{
-					
 					if (counter%2==0)
 					{
 						BonusSpawn();
@@ -66,7 +67,7 @@ public class Game {
 						grid.getCells(oldCellLine,oldCellColumn).setPlayer(null);
 						grid.getCells(newCellLine,newCellColumn).setPlayer(player);
 						System.out.println(grid.toString());
-						//System.out.println("player1 spells: 1:"+getCharacter().getSpell1());
+						System.out.println("player1 Hp "+player.getCharacter().getpv()+"player1 spells: 1:"+player.getCharacter().getSpell1()+ "2:"+player.getCharacter().getSpell2()+ "3:"+player.getCharacter().getSpell3() +"4:"+player.getCharacter().getSpell4());
 						doAttack();
 					}
 					else
@@ -92,11 +93,13 @@ public class Game {
 						grid.getCells(oldCellLine,oldCellColumn).setPlayer(null);
 						grid.getCells(newCellLine,newCellColumn).setPlayer(player);
 						System.out.println(grid.toString());
+						System.out.println("player1 Hp "+player.getCharacter().getpv()+"player1 spells: 1:"+player.getCharacter().getSpell1()+ "2:"+player.getCharacter().getSpell2()+ "3:"+player.getCharacter().getSpell3() +"4:"+player.getCharacter().getSpell4());
 						doAttack();
 					}
 						counter++;
 				}
 			}
+
 
 		private void BonusSpawn()
 			{
@@ -106,12 +109,48 @@ public class Game {
 				{
 					break;
 				}
-				Random whichBonus = new Random(); 
-				int value = whichBonus.nextInt(8);
-				if (value==1)
-					grid.cells
+				Random coordonateOfBonus = new Random(); 
+				BonusSpawnX = coordonateOfBonus.nextInt(19);
+				BonusSpawnY = coordonateOfBonus.nextInt(19);
+				
+				while(!isSpawningValid(grid.cells[BonusSpawnX][BonusSpawnY]))
+				{	
+					BonusSpawnX = coordonateOfBonus.nextInt(19);
+					BonusSpawnY = coordonateOfBonus.nextInt(19);
+				}
+					Random whichBonus = new Random(); 
+					int value = whichBonus.nextInt(9);
+					switch (value)
+					{
+					case 1:
+						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.BonusPv;
+					case 2:
+						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.MalusPv;
+					case 3:
+						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.BonusMp;
+					case 4:
+						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.MalusMp;
+					case 5:
+						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.MalusMp;
+					case 6:
+						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.BonusDmg;
+					case 7:
+						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.MalusDmg;
+					case 8:
+						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.BonusS;
+					case 9:
+						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.MalusS;
+					}
+					
 				
 			}
+
+		private boolean isSpawningValid(Cell cells)
+		{
+			if (cells==Cell.Empty)
+				return true;
+			return false;
+		}
 
 		public void doAttack()
 		{
@@ -129,6 +168,7 @@ public class Game {
 					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas (batard)");
 					doAttack();
 				}
+				break;
 			case 2:
 				if (player.getCharacter().getSpell2().isAttackValid())
 				{
@@ -139,6 +179,7 @@ public class Game {
 					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas (batard)");
 					doAttack();
 				}
+				break;
 			case 3:
 				if (player.getCharacter().getSpell3().isAttackValid())
 				{
@@ -149,6 +190,7 @@ public class Game {
 					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas (batard)");
 					doAttack();
 				}
+				break;
 			case 4:
 				if (player.getCharacter().getSpell4().isAttackValid())
 				{
@@ -250,8 +292,10 @@ public class Game {
 		}
 
 
-		private boolean endGame() {
-			
+		private boolean endGame(Player player) 
+		{
+			if (player.getCharacter().getpv()==0)
+				return true;
 			return false;
 		}
 		

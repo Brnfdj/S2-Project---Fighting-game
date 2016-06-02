@@ -147,7 +147,7 @@ public class Grid
 		{
 			for (int nbColumn = 0; nbColumn < NUMBER_OF_COLUMNS; nbColumn++)
 				Grid += this.cells[nbOfLine][nbColumn].toString();
-			Grid += "�\n+---";
+			Grid += "\n+---";
 				for (int numOflig = 0; numOflig < NUMBER_OF_LINES-1 ; numOflig++)
 					Grid +="+---";				
 				Grid += "+";
