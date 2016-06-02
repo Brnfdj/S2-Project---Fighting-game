@@ -123,23 +123,23 @@ public class Game {
 					switch (value)
 					{
 					case 1:
-						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.BonusPv;
+						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.BonusPv);
 					case 2:
-						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.MalusPv;
+						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.MalusPv);
 					case 3:
-						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.BonusMp;
+						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.BonusMp);
 					case 4:
-						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.MalusMp;
+						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.MalusMp);
 					case 5:
-						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.MalusMp;
+						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.MalusMp);
 					case 6:
-						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.BonusDmg;
+						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.BonusDmg);
 					case 7:
-						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.MalusDmg;
+						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.MalusDmg);
 					case 8:
-						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.BonusS;
+						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.BonusS);
 					case 9:
-						grid.cells[BonusSpawnX][BonusSpawnY]=Bonus.MalusS;
+						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.MalusS);
 					}
 					
 				
