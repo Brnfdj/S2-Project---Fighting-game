@@ -122,10 +122,12 @@ public class Grid
 		}
 	}	
 	
-	public Player getPlayer1() {
+	public Player getPlayer1() 
+	{
 		return player1;
 	}
-	public Player getPlayer2() {
+	public Player getPlayer2() 
+	{
 		return player2;
 	}
 	

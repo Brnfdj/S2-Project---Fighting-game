@@ -5,6 +5,7 @@ public enum Cell {
 
 	private Player player;
 	private Bonus bonus;
+	
 	public Player getPlayer() 
 	{
 		return player;

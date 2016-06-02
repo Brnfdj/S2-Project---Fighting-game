@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
 
-import miniprojetS2.Move;
-
 public class Game {
 	
 	
@@ -43,6 +41,7 @@ public class Game {
 				System.out.println(grid.toString());
 				while (!endGame(player))
 				{
+					player=grid.getPlayer1();
 					if (counter%2==0)
 					{
 						BonusSpawn();
@@ -58,20 +57,25 @@ public class Game {
 						}
 						coordonate();
 						
-						player=grid.getCells(oldCellLine,oldCellColumn).getPlayer();
-						while (!player.getCharacter().isValid(new Move(new Position(oldCellLine, oldCellColumn),new Position(newCellLine, newCellColumn))) 
+						while (!grid.getPlayer1().getCharacter().isValid(new Move(new Position(oldCellLine, oldCellColumn),new Position(newCellLine, newCellColumn))) 
 								&& !collision(new Move(new Position(oldCellLine, oldCellColumn),new Position(newCellLine, newCellColumn))))
 						{
 							coordonate();
 						}
 						grid.getCells(oldCellLine,oldCellColumn).setPlayer(null);
-						grid.getCells(newCellLine,newCellColumn).setPlayer(player);
+						grid.getCells(newCellLine,newCellColumn).setPlayer(grid.getPlayer1());
 						System.out.println(grid.toString());
-						System.out.println("player1 Hp "+player.getCharacter().getpv()+"player1 spells: 1:"+player.getCharacter().getSpell1()+ "2:"+player.getCharacter().getSpell2()+ "3:"+player.getCharacter().getSpell3() +"4:"+player.getCharacter().getSpell4());
+						System.out.println("player1 Hp "+grid.getPlayer1().getCharacter().getpv()+
+								"player1 spells: 1:"+grid.getPlayer1().getCharacter().getSpell1()+ 
+								"2:"+grid.getPlayer1().getCharacter().getSpell2()+ 
+								"3:"+grid.getPlayer1().getCharacter().getSpell3() +
+								"4:"+grid.getPlayer1().getCharacter().getSpell4());
 						doAttack();
 					}
 					else
 					{ 
+						player=grid.getPlayer2();
+						BonusSpawn();
 						if (counter==1)
 						{
 							opponentCellLine=0;
@@ -85,15 +89,15 @@ public class Game {
 						coordonate();
 						
 						player=grid.getCells(oldCellLine,oldCellColumn).getPlayer();
-						while (!player.getCharacter().isValid(new Move(new Position(oldCellLine, oldCellColumn),new Position(newCellLine, newCellColumn))))
+						while (!grid.getPlayer2().getCharacter().isValid(new Move(new Position(oldCellLine, oldCellColumn),new Position(newCellLine, newCellColumn))))
 						{
 							coordonate();
 							System.out.println(grid.toString());
 						}
 						grid.getCells(oldCellLine,oldCellColumn).setPlayer(null);
-						grid.getCells(newCellLine,newCellColumn).setPlayer(player);
+						grid.getCells(newCellLine,newCellColumn).setPlayer(grid.getPlayer2());
 						System.out.println(grid.toString());
-						System.out.println("player1 Hp "+player.getCharacter().getpv()+"player1 spells: 1:"+player.getCharacter().getSpell1()+ "2:"+player.getCharacter().getSpell2()+ "3:"+player.getCharacter().getSpell3() +"4:"+player.getCharacter().getSpell4());
+						System.out.println("player2 Hp "+grid.getPlayer2().getCharacter().getpv()+"player2 spells: 1:"+grid.getPlayer2().getCharacter().getSpell1()+ "2:"+grid.getPlayer2().getCharacter().getSpell2()+ "3:"+grid.getPlayer2().getCharacter().getSpell3() +"4:"+grid.getPlayer2().getCharacter().getSpell4());
 						doAttack();
 					}
 						counter++;
