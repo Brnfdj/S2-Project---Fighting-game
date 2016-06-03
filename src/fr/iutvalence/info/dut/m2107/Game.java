@@ -62,13 +62,16 @@ public class Game {
 						{
 							coordonate();
 						}
+						
+						isTakingBonus();
+						
 						grid.getCells(oldCellLine,oldCellColumn).setPlayer(null);
 						grid.getCells(newCellLine,newCellColumn).setPlayer(grid.getPlayer1());
 						System.out.println(grid.toString());
 						System.out.println("player1 Hp "+grid.getPlayer1().getCharacter().getpv()+
 								"player1 spells: 1:"+grid.getPlayer1().getCharacter().getSpell1()+ 
 								"2:"+grid.getPlayer1().getCharacter().getSpell2()+ 
-								"3:"+grid.getPlayer1().getCharacter().getSpell3() +
+								"3:"+grid.getPlayer1().getCharacter().getSpell3()+
 								"4:"+grid.getPlayer1().getCharacter().getSpell4());
 						doAttack();
 					}
@@ -88,12 +91,14 @@ public class Game {
 						}
 						coordonate();
 						
-						player=grid.getCells(oldCellLine,oldCellColumn).getPlayer();
-						while (!grid.getPlayer2().getCharacter().isValid(new Move(new Position(oldCellLine, oldCellColumn),new Position(newCellLine, newCellColumn))))
+						while (!grid.getPlayer2().getCharacter().isValid(new Move(new Position(oldCellLine, oldCellColumn),new Position(newCellLine, newCellColumn)))
+								&& !collision(new Move(new Position(oldCellLine, oldCellColumn),new Position(newCellLine, newCellColumn))))
 						{
 							coordonate();
-							System.out.println(grid.toString());
 						}
+						
+						isTakingBonus();
+						
 						grid.getCells(oldCellLine,oldCellColumn).setPlayer(null);
 						grid.getCells(newCellLine,newCellColumn).setPlayer(grid.getPlayer2());
 						System.out.println(grid.toString());
@@ -105,14 +110,52 @@ public class Game {
 			}
 
 
-		private void BonusSpawn()
+		public void isTakingBonus()
 			{
+				
+				if (BonusSpawnX==newCellLine && BonusSpawnY==newCellColumn)
+				{
+					switch(BonusSpawn())
+					{
+					case BonusDmg:
+						player.getCharacter().getSpell1().setDamages(player.getCharacter().getSpell1().getDamages()+1);
+						player.getCharacter().getSpell2().setDamages(player.getCharacter().getSpell2().getDamages()+1);
+						player.getCharacter().getSpell3().setDamages(player.getCharacter().getSpell3().getDamages()+1);
+						player.getCharacter().getSpell4().setDamages(player.getCharacter().getSpell4().getDamages()+1);
+					case MalusDmg:
+						player.getCharacter().getSpell1().setDamages(player.getCharacter().getSpell1().getDamages()-1);
+						player.getCharacter().getSpell2().setDamages(player.getCharacter().getSpell2().getDamages()-1);
+						player.getCharacter().getSpell3().setDamages(player.getCharacter().getSpell3().getDamages()-1);
+						player.getCharacter().getSpell4().setDamages(player.getCharacter().getSpell4().getDamages()-1);
+					case BonusMp:
+						player.getCharacter().setMovePoint(player.getCharacter().getMovePoint()+1);
+					case MalusMp:
+						player.getCharacter().setMovePoint(player.getCharacter().getMovePoint()-1);
+					case BonusPv:
+						player.getCharacter().setPv(player.getCharacter().getpv()+1);
+					case MalusPv:
+						player.getCharacter().setPv(player.getCharacter().getpv()-1);
+					case BonusS:
+						player.getCharacter().getSpell1().setScope(player.getCharacter().getSpell1().getScope()+1);
+						player.getCharacter().getSpell2().setScope(player.getCharacter().getSpell2().getScope()+1);
+						player.getCharacter().getSpell3().setScope(player.getCharacter().getSpell3().getScope()+1);
+						player.getCharacter().getSpell4().setScope(player.getCharacter().getSpell4().getScope()+1);
+					case MalusS:
+						player.getCharacter().getSpell1().setScope(player.getCharacter().getSpell1().getScope()-1);
+						player.getCharacter().getSpell2().setScope(player.getCharacter().getSpell2().getScope()-1);
+						player.getCharacter().getSpell3().setScope(player.getCharacter().getSpell3().getScope()-1);
+						player.getCharacter().getSpell4().setScope(player.getCharacter().getSpell4().getScope()-1);
+						
+					}
+				}
+			}
+		public Bonus BonusSpawn()
+			{
+				Bonus bonus = null;
 				Random probabilityBonusSpawner = new Random(); 
 				int bonusSpawn = probabilityBonusSpawner.nextInt(4);
-				if (bonusSpawn>1)
+				if (bonusSpawn==0)
 				{
-					break;
-				}
 				Random coordonateOfBonus = new Random(); 
 				BonusSpawnX = coordonateOfBonus.nextInt(19);
 				BonusSpawnY = coordonateOfBonus.nextInt(19);
@@ -123,33 +166,49 @@ public class Game {
 					BonusSpawnY = coordonateOfBonus.nextInt(19);
 				}
 					Random whichBonus = new Random(); 
-					int value = whichBonus.nextInt(9);
+					int value = whichBonus.nextInt(8);
 					switch (value)
 					{
 					case 1:
 						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.BonusPv);
+						bonus=Bonus.BonusPv;
+						break;
 					case 2:
 						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.MalusPv);
+						bonus=Bonus.MalusPv;
+						break;
 					case 3:
 						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.BonusMp);
+						bonus=Bonus.BonusMp;
+						break;
 					case 4:
 						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.MalusMp);
+						bonus=Bonus.MalusMp;
+						break;
 					case 5:
-						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.MalusMp);
-					case 6:
 						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.BonusDmg);
-					case 7:
+						bonus=Bonus.BonusDmg;
+						break;
+					case 6:
 						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.MalusDmg);
-					case 8:
+						bonus=Bonus.MalusDmg;
+						break;
+					case 7:
 						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.BonusS);
-					case 9:
+						bonus= Bonus.BonusS;
+						break;
+					case 8:
 						grid.cells[BonusSpawnX][BonusSpawnY].setBonus(Bonus.MalusS);
+						bonus=Bonus.MalusS;
 					}
+					
+				}
+				return bonus;
 					
 				
 			}
 
-		private boolean isSpawningValid(Cell cells)
+		public boolean isSpawningValid(Cell cells)
 		{
 			if (cells==Cell.Empty)
 				return true;
@@ -163,46 +222,54 @@ public class Game {
 			case 0:
 				break;
 			case 1:
-				if (player.getCharacter().getSpell1().isAttackValid())
+				if (player.getCharacter().getSpell1().isAttackValid(new Move(new Position(newCellLine,newCellColumn),
+																			new Position(opponentCellLine,opponentCellColumn))) 
+					&& collision(new Move(new Position(newCellLine,newCellColumn),new Position(opponentCellLine,opponentCellColumn))))
 				{
 					player.getCharacter().setPv(-player.getCharacter().getSpell1().getDamages());
 				}
 				else
 				{
-					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas (batard)");
+					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas");
 					doAttack();
 				}
 				break;
 			case 2:
-				if (player.getCharacter().getSpell2().isAttackValid())
+				if (player.getCharacter().getSpell2().isAttackValid(new Move(new Position(newCellLine,newCellColumn),
+																	new Position(opponentCellLine,opponentCellColumn)))
+					&& collision(new Move(new Position(newCellLine,newCellColumn),new Position(opponentCellLine,opponentCellColumn))))
 				{
 					player.getCharacter().setPv(-player.getCharacter().getSpell2().getDamages());
 				}
 				else
 				{
-					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas (batard)");
+					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas");
 					doAttack();
 				}
 				break;
 			case 3:
-				if (player.getCharacter().getSpell3().isAttackValid())
+				if (player.getCharacter().getSpell3().isAttackValid(new Move(new Position(newCellLine,newCellColumn),
+						new Position(opponentCellLine,opponentCellColumn))) 
+						&& collision(new Move(new Position(newCellLine,newCellColumn),new Position(opponentCellLine,opponentCellColumn))))
 				{
 					player.getCharacter().setPv(-player.getCharacter().getSpell3().getDamages());
 				}
 				else
 				{
-					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas (batard)");
+					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas");
 					doAttack();
 				}
 				break;
 			case 4:
-				if (player.getCharacter().getSpell4().isAttackValid())
+				if (player.getCharacter().getSpell4().isAttackValid(new Move(new Position(newCellLine,newCellColumn),
+						new Position(opponentCellLine,opponentCellColumn)))
+					&& collision(new Move(new Position(newCellLine,newCellColumn),new Position(opponentCellLine,opponentCellColumn))))
 				{
 					player.getCharacter().setPv(-player.getCharacter().getSpell4().getDamages());
 				}
 				else
 				{
-					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas (batard)");
+					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas");
 					doAttack();
 				}
 			}
@@ -272,7 +339,6 @@ public class Game {
 					return true;
 				return false;
 			}
-			return false;
 		}
 		
 		public int getNewCellLine()
@@ -296,7 +362,7 @@ public class Game {
 		}
 
 
-		private boolean endGame(Player player) 
+		public boolean endGame(Player player) 
 		{
 			if (player.getCharacter().getpv()==0)
 				return true;

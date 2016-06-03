@@ -40,6 +40,20 @@ public class Character {
 
 
 
+	public int getMovePoint()
+	{
+		return movePoint;
+	}
+
+
+
+	public void setMovePoint(int movePoint)
+	{
+		this.movePoint = movePoint;
+	}
+
+
+
 	/**
 	 * the definition of method who return true if the movement is in the grid
 	 * @param move
