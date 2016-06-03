@@ -1,33 +1,79 @@
 package fr.iutvalence.info.dut.m2107;
 import java.util.Random;
 import java.util.Scanner;
-
+/**
+ * Class which represent a grid
+ */
 public class Grid 
 {
-	
+	/**
+	 * Represent a keyboard input
+	 */
 	private static Scanner sc;
-	
+	/**
+	 * Represent the line's number of the game grid
+	 */
 	private final static int NUMBER_OF_LINES=20;
 	
 	/**
 	 *  Represent the column's number of the  game grid
 	 */
 	private final static int NUMBER_OF_COLUMNS=20;	
-	private int ligne;
+	/**
+	 * Represent a line
+	 */
+	private int line;
+	/**
+	 * Represent a column
+	 */
 	private int column;
+	/**
+	 * Represent the name of the player 1
+	 */
 	private String player1name;
+	/**
+	 * Represent the name of the player 2
+	 */
 	private String player2name;
+	/**
+	 * Represent the character of the player 1
+	 */
 	private int perso1;
+	/**
+	 * Represent the character of the player 2
+	 */
 	private int perso2;
+	/**
+	 * Represent a board of cells
+	 */
 	public Cell[][] cells;
+	/**
+	 * Represent the player 1
+	 */
 	private Player player1;
+	/**
+	 * Represent the player 2
+	 */
 	private Player player2;
+	/**
+	 * Permit to count lines
+	 */
 	private int lineCounter;
+	/**
+	 * Permit to count columns
+	 */
 	private int columnCounter;
 	
+	/**
+	 * @return the player 1 name's 
+	 */
 	public String getPlayer1name() {
 		return player1name;
 	}
+	/**
+	 * 
+	 * @return the player 2 name's
+	 */
 	public String getPlayer2name() {
 		return player2name;
 	}
@@ -42,30 +88,25 @@ public class Grid
 		{
 			for (int nbcolumn=0;nbcolumn<NUMBER_OF_COLUMNS;nbcolumn++)
 			{
-				cells[nblines][nbcolumn]=Cell.Empty;
-			}
+				cells[nblines][nbcolumn]=new Cell();
 		}
 		
 	}
+	}
 	/**
-	 * initialisation of the grid which put each pieces on the grid at the beginning of the game
+	 * initialisation of the grid which put each characters on the grid at the beginning of the game
 	 */
 	public void initialisation()
 	{
-		for (int i=0;i<NUMBER_OF_LINES;i++)
-		{
-			for (int j=0; j<NUMBER_OF_COLUMNS;j++)
-			{
-				this.cells[i][j]=Cell.Empty;
-			}
-		}
 		characterchose();
 		blockSpawn();
 		cells[0][0].setPlayer(player1);
 		cells[19][19].setPlayer(player2);
 	}
 	
-	
+	/**
+	 *  Put a random number of block into the grid
+	 */
 	public void blockSpawn()
 	{
 		Random numberOfBlock = new Random(); 
@@ -77,6 +118,9 @@ public class Grid
 			int yBlock =  blockCoordonate.nextInt(20);
 		}
 	}
+	/**
+	 * Permit 2 players to choose each character
+	 */
 	private void characterchose() 
 	{
 		sc = new Scanner(System.in);
@@ -121,26 +165,40 @@ public class Grid
 			player2=new Player(player2name,new Cartman("Cartman",30,4,new Attack("negociation",4,3),new Attack("entourloupe",6,2),new Attack("corruption",3,4),new Attack("coup de bidon",2,8)));
 		}
 	}	
-	
+	/**
+	 * @return the player 1
+	 */
 	public Player getPlayer1() 
 	{
 		return player1;
 	}
+	/**
+	 * @return the player 2
+	 */
 	public Player getPlayer2() 
 	{
 		return player2;
 	}
-	
+	/**
+	 * @param x
+	 * @param y
+	 * @return the cell to the x and y coordinates
+	 */
 	public Cell getCells(int x, int y)
 	{
 		return cells[x][y];
 	}
-	
+	/**
+	 * Change a cell
+	 * @param cells
+	 */
 	public void setCells(Cell[][] cells)
 	{
 		this.cells = cells;
 	}
-	
+	/**
+	 * Permit to display the grid on the console
+	 */
 	public String toString()
 	{
 		String Grid = "";

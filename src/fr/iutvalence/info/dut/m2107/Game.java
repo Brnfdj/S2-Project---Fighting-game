@@ -1,26 +1,59 @@
 package fr.iutvalence.info.dut.m2107;
 import java.util.Random;
 import java.util.Scanner;
-
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
-
+/**
+ * Represent the game class
+ */
 public class Game {
 	
-	
+	/**
+	 *  Represent the keyboard input
+	 */
 	private static Scanner sc;
+	/**
+	 * Represent a counter
+	 */
 	private int counter=0;
-	
+	/**
+	 * Represent the cell line of the former position
+	 */
 	private int oldCellLine;
+	/**
+	 * Represent a player
+	 */
 	private Player player;
+	/**
+	 * Represent the cell column of the former position
+	 */
 	private int oldCellColumn;
+	/**
+	 * Represent the cell line of the new position 
+	 */
 	private int newCellLine;
+	/**
+	 * Represent the cell column of the new position 
+	 */
 	private int newCellColumn;
+	/**
+	 * Represent the cell line of the position of the opponent 
+	 */
 	private int opponentCellLine;
+	/**
+	 * Represent the cell column of the position of the opponent
+	 */
 	private int opponentCellColumn;
+	/**
+	 * Represent the x coordonate of a bonus
+	 */
 	private int BonusSpawnX;
+	/**
+	 * Represent the y coordonate of a bonus
+	 */
 	private int BonusSpawnY;
 	
-		
+		/**
+		 * The constructor of the class game
+		 */
 		public Game()
 		{
 			
@@ -30,8 +63,6 @@ public class Game {
 		/**
 		 * while anyplayer doesn't lose the game, continue and each player play .
 		 */
-		
-	
 		Grid grid= new Grid();
 			public void play()
 			{
@@ -39,7 +70,7 @@ public class Game {
 				sc = new Scanner(System.in);
 				grid.initialisation();
 				System.out.println(grid.toString());
-				while (!endGame(player))
+				while (!endGame())
 				{
 					player=grid.getPlayer1();
 					if (counter%2==0)
@@ -68,10 +99,10 @@ public class Game {
 						grid.getCells(oldCellLine,oldCellColumn).setPlayer(null);
 						grid.getCells(newCellLine,newCellColumn).setPlayer(grid.getPlayer1());
 						System.out.println(grid.toString());
-						System.out.println("player1 Hp "+grid.getPlayer1().getCharacter().getpv()+
-								"player1 spells: 1:"+grid.getPlayer1().getCharacter().getSpell1()+ 
-								"2:"+grid.getPlayer1().getCharacter().getSpell2()+ 
-								"3:"+grid.getPlayer1().getCharacter().getSpell3()+
+						System.out.println("player1 Hp "+grid.getPlayer1().getCharacter().getpv()+"\n"+
+								"player1 spells:" +"\n"+ "1:"+grid.getPlayer1().getCharacter().getSpell1()+"\n"+
+								"2:"+grid.getPlayer1().getCharacter().getSpell2()+ "\n"+ 
+								"3:"+grid.getPlayer1().getCharacter().getSpell3()+ "\n"+
 								"4:"+grid.getPlayer1().getCharacter().getSpell4());
 						doAttack();
 					}
@@ -109,7 +140,9 @@ public class Game {
 				}
 			}
 
-
+		/**
+		 *  Application of bonus
+		 */
 		public void isTakingBonus()
 			{
 				
@@ -207,14 +240,20 @@ public class Game {
 					
 				
 			}
-
+		/**
+		 * Say if a spawn is valid
+		 * @param cells
+		 * @return
+		 */
 		public boolean isSpawningValid(Cell cells)
 		{
-			if (cells==Cell.Empty)
+			if (cells==null)
 				return true;
 			return false;
 		}
-
+		/**
+		 * Method which permit to attack
+		 */
 		public void doAttack()
 		{
 			switch(sc.nextInt())
@@ -230,7 +269,7 @@ public class Game {
 				}
 				else
 				{
-					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas");
+					System.out.println("attaque non valide, choisissez une autre attaque ou n'attaquez pas");
 					doAttack();
 				}
 				break;
@@ -243,7 +282,7 @@ public class Game {
 				}
 				else
 				{
-					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas");
+					System.out.println("attaque non valide, choisissez une autre attaque ou n'attaquez pas");
 					doAttack();
 				}
 				break;
@@ -256,7 +295,7 @@ public class Game {
 				}
 				else
 				{
-					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas");
+					System.out.println("attaque non valide, choisissez une autre attaque ou n'attaquez pas");
 					doAttack();
 				}
 				break;
@@ -269,12 +308,14 @@ public class Game {
 				}
 				else
 				{
-					System.out.println("attaque non valide choisisez autre chose ou n'attaquer pas");
+					System.out.println("attaque non valide, choisissez une autre attaque ou n'attaquez pas");
 					doAttack();
 				}
 			}
 		}
-			
+		/**
+		 * Method which apply coordonates
+		 */
 		public void coordonate()
 		{
 			switch(counter)
@@ -291,22 +332,26 @@ public class Game {
 				newCellColumn=sc.nextInt();
 				
 			default:
-				System.out.println("entrez les coordonnï¿½es de votre dï¿½placement:");
+				System.out.println("entrez les coordonnées de votre déplacement:");
 				oldCellLine=newCellLine;
 				oldCellColumn=newCellColumn;
 				newCellLine=sc.nextInt();
 				newCellColumn=sc.nextInt();
 			}
 		}
-		
+		/**
+		 * Method which control collisions
+		 * @param move
+		 * @return
+		 */
 		public boolean collision(Move move)
 		{
-			if (grid.getCells(move.getFinish().getLine(),move.getFinish().getColumn()).getCell()!=Cell.Empty)
+			if (grid.getCells(move.getFinish().getLine(),move.getFinish().getColumn()).getCell()!=null)
 				return false;
 			if(move.getMoveX()==0)
 			{
 					int i=0;
-					while(grid.getCells(move.getStart().getLine(),move.getStart().getColumn()+i).getCell()==Cell.Empty &&  i<move.getMoveY());
+					while(grid.getCells(move.getStart().getLine(),move.getStart().getColumn()+i).getCell()==null &&  i<move.getMoveY());
 					{
 						i++;
 					}
@@ -318,7 +363,7 @@ public class Game {
 			if(move.getMoveY()==0)
 			{
 					int i=0;
-					while(grid.getCells(move.getStart().getLine()+i,move.getStart().getColumn()).getCell()==Cell.Empty 
+					while(grid.getCells(move.getStart().getLine()+i,move.getStart().getColumn()).getCell()==null 
 							&&  i<move.getMoveX());
 					{
 						i++;
@@ -330,7 +375,7 @@ public class Game {
 			else
 			{
 				int i=0;
-				while(grid.getCells(move.getStart().getLine()+i,move.getStart().getColumn()+i).getCell()==Cell.Empty 
+				while(grid.getCells(move.getStart().getLine()+i,move.getStart().getColumn()+i).getCell()==null 
 						&&  i<move.getMoveY() && i<move.getMoveX());
 				{
 					i++;
@@ -340,32 +385,41 @@ public class Game {
 				return false;
 			}
 		}
-		
+		/**
+		 * @return the new cell line
+		 */
 		public int getNewCellLine()
 		{
 			return newCellLine;
 		}
-
+		/**
+		 * @return the new cell column
+		 */
 		public int getNewCellColumn() 
 		{
 			return newCellColumn;
 		}
-
+		/**
+		 * @return the opponent cell line
+		 */
 		public int getOpponentCellLine() 
 		{
 			return opponentCellLine;
 		}
-
+		/**
+		 * @return the opponent cell column
+		 */
 		public int getOpponentCellColumn() 
 		{
 			return opponentCellColumn;
 		}
 
-
-		public boolean endGame(Player player) 
+		/**
+		 * @return true if a player has his character with 0 life points
+		 */
+		public boolean endGame() 
 		{
-			if (player.getCharacter().getpv()==0)
-				return true;
+			
 			return false;
 		}
 		
